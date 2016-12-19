@@ -553,46 +553,65 @@ public abstract class AbstractGUIController implements Initializable {
 		TableColumn<CtCrisis, Double> latitudeCol = new TableColumn<CtCrisis, Double>("Latitude");
 		TableColumn<CtCrisis, String> commentCol = new TableColumn<CtCrisis, String>("Comment");
 		TableColumn<CtCrisis, String> statusCol = new TableColumn<CtCrisis, String>("Status");
+		
 		idCol.setCellValueFactory(new Callback<CellDataFeatures<CtCrisis, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<CtCrisis, String> alert) {
+				if (alert.getValue().type.name()=="huge"){
 				return new ReadOnlyObjectWrapper<String>(alert.getValue().id.value.getValue());
+				}
+				else return null;
 			}
 		});
 		dateCol.setCellValueFactory(new Callback<CellDataFeatures<CtCrisis, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<CtCrisis, String> crisis) {
-				return new ReadOnlyObjectWrapper<String>(crisis.getValue().instant.date.toString());
+				if (crisis.getValue().type.name()=="huge"){
+				return new ReadOnlyObjectWrapper<String>(crisis.getValue().instant.date.toString());}
+				else return null;
 			}
 		});
 		timeCol.setCellValueFactory(new Callback<CellDataFeatures<CtCrisis, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<CtCrisis, String> crisis) {
-				return new ReadOnlyObjectWrapper<String>(crisis.getValue().instant.time.toString());
+				if (crisis.getValue().type.name()=="huge"){
+				return new ReadOnlyObjectWrapper<String>(crisis.getValue().instant.time.toString());}
+				else return null;
 			}
 		});
 		longitudeCol.setCellValueFactory(new Callback<CellDataFeatures<CtCrisis, Double>, ObservableValue<Double>>() {
 			public ObservableValue<Double> call(CellDataFeatures<CtCrisis, Double> crisis) {
-				return new ReadOnlyObjectWrapper<Double>(crisis.getValue().location.longitude.value.getValue());
+				if (crisis.getValue().type.name()=="huge"){
+				return new ReadOnlyObjectWrapper<Double>(crisis.getValue().location.longitude.value.getValue());}
+				else return null;
 			}
 		});
 		latitudeCol.setCellValueFactory(new Callback<CellDataFeatures<CtCrisis, Double>, ObservableValue<Double>>() {
 			public ObservableValue<Double> call(CellDataFeatures<CtCrisis, Double> crisis) {
-				return new ReadOnlyObjectWrapper<Double>(crisis.getValue().location.latitude.value.getValue());
+				if (crisis.getValue().type.name()=="huge"){
+				return new ReadOnlyObjectWrapper<Double>(crisis.getValue().location.latitude.value.getValue());}
+				else return null;
 			}
 		});
 		commentCol.setCellValueFactory(new Callback<CellDataFeatures<CtCrisis, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<CtCrisis, String> crisis) {
-				return new ReadOnlyObjectWrapper<String>(crisis.getValue().comment.value.getValue());
+				if (crisis.getValue().type.name()=="huge"){
+				return new ReadOnlyObjectWrapper<String>(crisis.getValue().comment.value.getValue());}
+				else return null;
 			}
 		});
 		statusCol.setCellValueFactory(new Callback<CellDataFeatures<CtCrisis, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<CtCrisis, String> crisis) {
-				return new ReadOnlyObjectWrapper<String>(crisis.getValue().status.name());
+				if (crisis.getValue().type.name()=="huge"){
+				return new ReadOnlyObjectWrapper<String>(crisis.getValue().status.name());}
+				else return null;
 			}
 		});
 		typeCol.setCellValueFactory(new Callback<CellDataFeatures<CtCrisis, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<CtCrisis, String> crisis) {
-				return new ReadOnlyObjectWrapper<String>(crisis.getValue().type.name());
+				if (crisis.getValue().type.name()=="huge"){
+				return new ReadOnlyObjectWrapper<String>(crisis.getValue().type.name());}
+				else return null;
 			}
 		});
+		
 		tblvw.getColumns().add(idCol);
 		tblvw.getColumns().add(dateCol);
 		tblvw.getColumns().add(timeCol);
